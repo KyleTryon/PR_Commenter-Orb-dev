@@ -82,8 +82,8 @@ workflows:
       - orb-tools/dev-promote-prod:
           name: dev-promote-patch
           orb-name: sandbox/prcommenter
-          requires:
-            - integration-tests-master
+          # requires:
+          #   - integration-tests-master
           filters:
             branches:
               ignore: /.*/
