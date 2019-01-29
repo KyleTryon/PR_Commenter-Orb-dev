@@ -2,8 +2,9 @@ version: 2.1
 #first dev
 orbs:
   orb-tools: circleci/orb-tools@volatile
-  # prcommenter: sandbox/prcommenter@dev:alpha
+  prcommenter: sandbox/prcommenter@dev:alpha
   cli: circleci/circleci-cli@volatile
+
 
 workflows:
   lint_pack-validate_publish-dev:
@@ -58,23 +59,23 @@ workflows:
       # integration tests of your choosing
 
       # this would need to be defined in a `jobs` section (not shown here)
-      # - integration-tests:
-      #     name: integration-tests-dev
-      #     filters:
-      #       branches:
-      #         ignore: /.*/
-      #       tags:
-      #         only: /integration-.*/
+      - prcommenter/commentpr:
+          name: integration-tests-dev
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /integration-.*/
 
-      # # call jobs twice, once for workflows resulting from non-master-branch
-      # # commits (above); once for commits to master (below)
-      # - integration-tests:
-      #     name: integration-tests-master
-      #     filters:
-      #       branches:
-      #         ignore: /.*/
-      #       tags:
-      #         only: /master-.*/
+      # call jobs twice, once for workflows resulting from non-master-branch
+      # commits (above); once for commits to master (below)
+      - prcommenter/commentpr:
+          name: integration-tests-master
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /master-.*/
 
       # patch, minor, or major publishing, depending on which orb source
       # files have been modified (that logic lives in the
@@ -82,8 +83,8 @@ workflows:
       - orb-tools/dev-promote-prod:
           name: dev-promote-patch
           orb-name: sandbox/prcommenter
-          # requires:
-          #   - integration-tests-master
+          requires:
+            - integration-tests-master
           filters:
             branches:
               ignore: /.*/
@@ -94,8 +95,8 @@ workflows:
           name: dev-promote-minor
           release: minor
           orb-name: sandbox/prcommenter
-          # requires:
-          #   - integration-tests-master
+          requires:
+            - integration-tests-master
           filters:
             branches:
               ignore: /.*/
@@ -106,8 +107,8 @@ workflows:
           name: dev-promote-major
           release: major
           orb-name: sandbox/prcommenter
-          # requires:
-          #   - integration-tests-master
+          requires:
+            - integration-tests-master
           filters:
             branches:
               ignore: /.*/

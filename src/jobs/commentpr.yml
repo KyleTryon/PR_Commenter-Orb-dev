@@ -16,5 +16,6 @@ steps:
         then
           echo $CIRCLE_PULL_REQUEST
         else
-          echo "This is not a puyll request. If you intend to open an pull request after this commit, all preceeding commits will be commented"
+          echo "This is not a pull request. If you intend to open an pull request after this commit, all preceeding commits will be commented"
+          echo exit 1
         fi
