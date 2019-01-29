@@ -15,7 +15,7 @@ jobs:
 workflows:
   lint_pack-validate_publish-dev:
     # this `lint-pack_validate_publish-dev` workflow will run on any commit
-    - orb-tools/lint
+    - orb-tools/lint:
 
     # pack your orb YAML files to a single orb.yml
     # validate the orb.yml file to ensure it is well-formed
