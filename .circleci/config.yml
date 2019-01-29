@@ -94,8 +94,8 @@ workflows:
           name: dev-promote-minor
           release: minor
           orb-name: sandbox/prcommenter
-          requires:
-            - integration-tests-master
+          # requires:
+          #   - integration-tests-master
           filters:
             branches:
               ignore: /.*/
@@ -106,8 +106,8 @@ workflows:
           name: dev-promote-major
           release: major
           orb-name: sandbox/prcommenter
-          requires:
-            - integration-tests-master
+          # requires:
+          #   - integration-tests-master
           filters:
             branches:
               ignore: /.*/
