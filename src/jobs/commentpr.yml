@@ -5,7 +5,7 @@ parameters:
     description: Your GitHub API Token for submitting the PR comment.
     type: string
 
-executor: spotify/alpine
+executor: default
 
 steps:
   - run:
