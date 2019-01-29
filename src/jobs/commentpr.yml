@@ -4,6 +4,7 @@ parameters:
   token:
     description: Your GitHub API Token for submitting the PR comment.
     type: string
+    default: ${GITHUB_TOKEN}
 
 executor: default
 
