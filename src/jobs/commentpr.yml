@@ -1,10 +1,10 @@
 description: Take the contents of the commit message and add as a comment to the currently open PR request.
 
-parameters:
-  token:
-    description: Your GitHub API Token for submitting the PR comment.
-    type: string
-    default: ${GITHUB_TOKEN}
+# parameters:
+#   token:
+#     description: Your GitHub API Token for submitting the PR comment.
+#     type: string
+#     default: ${GITHUB_TOKEN}
 
 executor: default
 
