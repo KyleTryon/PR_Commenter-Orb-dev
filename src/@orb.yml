@@ -1,0 +1,4 @@
+version: 2.1
+
+description: |
+  Add commit message as comment to open pull request

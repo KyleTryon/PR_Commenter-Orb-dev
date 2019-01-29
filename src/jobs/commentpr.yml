@@ -1,0 +1,20 @@
+description: Take the contents of the commit message and add as a comment to the currently open PR request.
+
+parameters:
+  token:
+    description: Your GitHub API Token for submitting the PR comment.
+    type: string
+
+executor: spotify/alpine
+
+steps: 
+  - run:
+      name: Submitting PR comment
+      command: |
+        #Check if current job is part of a Pull Request
+        if [ -z $CIRCLE_PULL_REQUEST ]
+        then
+          echo $CIRCLE_PULL_REQUEST
+        else
+          echo "This is not a puyll request. If you intend to open an pull request after this commit, all preceeding commits will be commented"
+        fi
