@@ -7,7 +7,7 @@ parameters:
 
 executor: spotify/alpine
 
-steps: 
+steps:
   - run:
       name: Submitting PR comment
       command: |
