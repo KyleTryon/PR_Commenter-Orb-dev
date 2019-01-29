@@ -5,13 +5,6 @@ orbs:
   # prcommenter: sandbox/prcommenter@dev:alpha
   cli: circleci/circleci-cli@volatile
 
-jobs:
-  integration-tests:
-    executor: cli/default
-    steps:
-      - prcommenter/commentpr
-
-
 workflows:
   lint_pack-validate_publish-dev:
     jobs:
@@ -65,23 +58,23 @@ workflows:
       # integration tests of your choosing
 
       # this would need to be defined in a `jobs` section (not shown here)
-      - integration-tests:
-          name: integration-tests-dev
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /integration-.*/
+      # - integration-tests:
+      #     name: integration-tests-dev
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /integration-.*/
 
-      # call jobs twice, once for workflows resulting from non-master-branch
-      # commits (above); once for commits to master (below)
-      - integration-tests:
-          name: integration-tests-master
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /master-.*/
+      # # call jobs twice, once for workflows resulting from non-master-branch
+      # # commits (above); once for commits to master (below)
+      # - integration-tests:
+      #     name: integration-tests-master
+      #     filters:
+      #       branches:
+      #         ignore: /.*/
+      #       tags:
+      #         only: /master-.*/
 
       # patch, minor, or major publishing, depending on which orb source
       # files have been modified (that logic lives in the
