@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   orb-tools: circleci/orb-tools@volatile
-  prcommenter: sandbox/prcommenter@dev:alpha
+  # prcommenter: sandbox/prcommenter@dev:alpha
   cli: circleci/circleci-cli@volatile
 
 jobs:
